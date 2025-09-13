@@ -1,27 +1,46 @@
-import { useState } from "react";
+import Head from 'next/head';
+import React from 'react';
+import { History } from '../components/history';
+import { Input } from '../components/input';
+import { useShell } from '../utils/shellProvider';
+import { useTheme } from '../utils/themeProvider';
+import config from '../../config.json';
 
-export default function Home() {
-  const [count, setCount] = useState(0);
+
+const IndexPage = ({ inputRef }) => {
+  const { history } = useShell();
+  const { theme } = useTheme();
+
+  const containerRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [history, inputRef]);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-         <a href="https://react.dev/" target="_blank">
-          <img src="/react.svg" className="logo" alt="React logo" />
-        </a>
-      </div>
-      <h1>Next.js + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((c) => c + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>pages/index.jsx</code> and save to test HMR
-        </p>
+      <Head>
+        <title>K Terminal | Home</title>
+      </Head>
+
+      <div
+        className="overflow-hidden h-full rounded"
+        style={{
+          borderColor: theme.yellow,
+          padding: config.border ? 16 : 8,
+          borderWidth: config.border ? 2 : 0,
+        }}
+      >
+        <div ref={containerRef} className="overflow-y-auto h-full">
+          <History history={history} />
+
+          <Input inputRef={inputRef} containerRef={containerRef} />
+        </div>
       </div>
     </>
   );
-}
+};
+
+export default IndexPage;
