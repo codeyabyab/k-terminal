@@ -44,12 +44,6 @@ export const ShellProvider = ({ children }) => {
   const execute = useCallback(async () => {
     const [cmd, ...args] = command.split(" ").slice(1);
 
-    if (isTrackingEnabled && window?.umami?.track) {
-      window.umami.track(`command - ${cmd}`, {
-        args: args.join(" "),
-      });
-    }
-
     switch (cmd) {
       case "theme": {
         const output = await bin.theme(args, setTheme);
