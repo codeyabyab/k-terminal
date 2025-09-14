@@ -28,7 +28,7 @@ const IndexPage = ({ inputRef }) => {
       <div
         className="overflow-hidden h-full rounded"
         style={{
-          borderColor: theme.yellow,
+          borderColor: theme.blue,
           padding: config.border ? 16 : 8,
           borderWidth: config.border ? 2 : 0,
         }}
