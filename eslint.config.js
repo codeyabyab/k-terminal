@@ -12,6 +12,7 @@ export default defineConfig([
       js.configs.recommended,
       reactHooks.configs['recommended-latest'],
       reactRefresh.configs.vite,
+      'next/core-web-vitals',
     ],
     languageOptions: {
       ecmaVersion: 2020,
