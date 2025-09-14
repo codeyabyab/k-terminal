@@ -1,6 +1,6 @@
 import { getProjects } from '../../api';
 
-export const projects = async (_args) => {
+export const projects = async () => {
   const projects = await getProjects();
 
   return projects
