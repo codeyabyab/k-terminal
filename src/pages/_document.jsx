@@ -14,7 +14,7 @@ class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/codeyabyab-logo-1.png" />
           <link rel="manifest" href="/manifest.json" />
 
           <meta name="theme-color" content="#D79921" />
