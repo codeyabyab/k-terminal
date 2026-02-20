@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { commandExists } from '../../utils/commandExists';
-import { useShell } from '../../utils/shellProvider';
-import { handleTabCompletion } from '../../utils/tabCompletion';
-import { useTheme } from '../../utils/themeProvider';
-import { Ps1 } from '../ps1';
+import React, { useEffect, useState } from "react";
+import { commandExists } from "../../utils/commandExists";
+import { useShell } from "../../utils/shellProvider";
+import { handleTabCompletion } from "../../utils/tabCompletion";
+import { useTheme } from "../../utils/themeProvider";
+import { Ps1 } from "../ps1";
 
 export const Input = ({ inputRef, containerRef }) => {
   const { theme } = useTheme();
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const {
     setCommand,
     history,
@@ -26,39 +26,39 @@ export const Input = ({ inputRef, containerRef }) => {
       .map(({ command }) => command)
       .filter((value) => value);
 
-    if (event.key === 'c' && event.ctrlKey) {
+    if (event.key === "c" && event.ctrlKey) {
       event.preventDefault();
 
-      setValue('');
+      setValue("");
 
-      setHistory('');
+      setHistory("");
 
       setLastCommandIndex(0);
     }
 
-    if (event.key === 'l' && event.ctrlKey) {
+    if (event.key === "l" && event.ctrlKey) {
       event.preventDefault();
 
       clearHistory();
     }
 
-    if (event.key === 'Tab') {
+    if (event.key === "Tab") {
       event.preventDefault();
 
       handleTabCompletion(value, setValue);
     }
 
-    if (event.key === 'Enter' || event.code === '13') {
+    if (event.key === "Enter" || event.code === "13") {
       event.preventDefault();
 
       setLastCommandIndex(0);
 
       setCommand(value);
 
-      setValue('');
+      setValue("");
     }
 
-    if (event.key === 'ArrowUp') {
+    if (event.key === "ArrowUp") {
       event.preventDefault();
 
       if (!commands.length) {
@@ -73,7 +73,7 @@ export const Input = ({ inputRef, containerRef }) => {
       }
     }
 
-    if (event.key === 'ArrowDown') {
+    if (event.key === "ArrowDown") {
       event.preventDefault();
 
       if (!commands.length) {
@@ -87,36 +87,39 @@ export const Input = ({ inputRef, containerRef }) => {
         setValue(commands[commands.length - index]);
       } else {
         setLastCommandIndex(0);
-        setValue('');
+        setValue("");
       }
     }
   };
 
   return (
-    <div className="flex flex-row space-x-2">
-      <label htmlFor="prompt" className="flex-shrink">
-        <Ps1 />
-      </label>
+    <>
+      <div className="flex flex-row space-x-2">
+        <label htmlFor="prompt" className="flex-shrink">
+          <Ps1 />
+        </label>
 
-      <input
-        ref={inputRef}
-        id="prompt"
-        type="text"
-        className="focus:outline-none flex-grow"
-        aria-label="prompt"
-        style={{
-          backgroundColor: theme.background,
-          color: commandExists(value) || value === '' ? theme.green : theme.red,
-        }}
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
-        autoFocus
-        onKeyDown={onSubmit}
-        autoComplete="off"
-        autoCorrect="off"
-        autoCapitalize="off"
-      />
-    </div>
+        <input
+          ref={inputRef}
+          id="prompt"
+          type="text"
+          className="focus:outline-none flex-grow"
+          aria-label="prompt"
+          style={{
+            backgroundColor: theme.background,
+            color:
+              commandExists(value) || value === "" ? theme.green : theme.red,
+          }}
+          value={value}
+          onChange={(event) => setValue(event.target.value)}
+          autoFocus
+          onKeyDown={onSubmit}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+        />
+      </div>
+    </>
   );
 };
 
