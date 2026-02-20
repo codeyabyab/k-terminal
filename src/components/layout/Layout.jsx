@@ -6,6 +6,7 @@ const Layout = ({ children, onClick }) => {
   const { theme } = useTheme();
 
   return (
+    <>
     <div
       className="min-w-max text-xs md:min-w-full md:text-base"
       onClick={onClick}
@@ -22,6 +23,7 @@ const Layout = ({ children, onClick }) => {
         {children}
       </main>
     </div>
+    </>
   );
 };
 
