@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useTheme } from '../../utils/themeProvider';
+import React, { useEffect, useState } from "react";
+import { useTheme } from "../../utils/themeProvider";
 
 export const Ps1 = () => {
-  const [hostname, setHostname] = useState('');
+  const [hostname, setHostname] = useState("");
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -10,36 +10,38 @@ export const Ps1 = () => {
   }, []);
 
   return (
-    <div>
-      <span
-        style={{
-          color: theme.yellow,
-        }}
-      >
-        guest
-      </span>
-      <span
-        style={{
-          color: theme.white,
-        }}
-      >
-        @
-      </span>
-      <span
-        style={{
-          color: theme.green,
-        }}
-      >
-        {hostname}
-      </span>
-      <span
-        style={{
-          color: theme.white,
-        }}
-      >
-        :$ ~
-      </span>
-    </div>
+    <>
+      <div>
+        <span
+          style={{
+            color: theme.yellow,
+          }}
+        >
+          guest
+        </span>
+        <span
+          style={{
+            color: theme.white,
+          }}
+        >
+          @
+        </span>
+        <span
+          style={{
+            color: theme.green,
+          }}
+        >
+          {hostname}
+        </span>
+        <span
+          style={{
+            color: theme.white,
+          }}
+        >
+          :$ ~
+        </span>
+      </div>
+    </>
   );
 };
 
