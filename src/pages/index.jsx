@@ -1,46 +1,7 @@
-import Head from 'next/head';
-import React from 'react';
-import { History } from '../components/history';
-import { Input } from '../components/input';
-import { useShell } from '../utils/shellProvider';
-import { useTheme } from '../utils/themeProvider';
-import config from '../../config.json';
+function Home(){
+  return <>
+  <div>Renovation in Progress</div>
+  </>
+}
 
-
-const IndexPage = ({ inputRef }) => {
-  const { history } = useShell();
-  const { theme } = useTheme();
-
-  const containerRef = React.useRef(null);
-
-  React.useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [history, inputRef]);
-
-  return (
-    <>
-      <Head>
-        <title>K Terminal | Home</title>
-      </Head>
-
-      <div
-        className="overflow-hidden h-full rounded"
-        style={{
-          borderColor: theme.blue,
-          padding: config.border ? 16 : 8,
-          borderWidth: config.border ? 2 : 0,
-        }}
-      >
-        <div ref={containerRef} className="overflow-y-auto h-full">
-          <History history={history} />
-
-          <Input inputRef={inputRef} containerRef={containerRef} />
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default IndexPage;
+export default Home
