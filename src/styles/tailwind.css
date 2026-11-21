@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "CascadiaCode";
+    src: url(/fonts/CascadiaCode.ttf);
+    display: swap;
+}
+
+body {
+    font-family: "CascadiaCode", monospace;
+}
